@@ -1,39 +1,100 @@
-@extends('layout.applogin')
+@extends('layout.login.applogin')
 @section('main-content')
-    <div class="header">
-        <div class="container">
-            <div class="banner-info">
-                <div class="col-md-8 col-md-offset-2">
-                <h2 style="text-align: center">Login</h2>
-                    <br/>
-                <div class="row">
-                <form class="form-horizontal" method="post" action="{{url('/loginData')}}" enctype=multipart/form-data>
-                <div class="col-md-12" >
-                <div class="form-group">
-                {!! csrf_field() !!}
+    <div id="logo">
+        <h1><i> LEXSHIP lOGISTICS</i></h1>
+    </div>
+    <section class="lexship-login">
 
+        <form class="form-horizontal" method="post" action="{{url('/loginData')}}" enctype=multipart/form-data>
+            <div id="fade-box">
+                {!! csrf_field() !!}
                 <strong style="color: #ffffff">{{ session()->get( 'message' ) }}</strong>
-                <input class="form-control" type="email" id="email" name="email" placeholder="Enter your Email" required>
-                </div>
-                </div>
-                <div class="col-md-12" >
-                <div class="form-group">
-                <input class="form-control" type="password" id="password" name="password" placeholder="Enter your Password" required>
-                </div>
-                </div>
-                <div class="col-md-12" >
-                <div class="form-group" align="center">
-                 {{--<input class="btn btn-primary" type="submit" id="submit" name="submit" value="Login" >--}}
-                    <button class="btn btn-primary" type="submit" id="submit" name="submit" >Login</button>
-                 </div>
-                </div>
-                </form>
-                </div>
-                </div>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" name="password" placeholder="password" required>
+
+                <button class="btn btn-primary" type="submit" id="submit" name="submit">Log In</button>
+                <p class="regmessage">Not registered? <a href="{{url('register')}}" class="reglink">Create an account</a></p>
             </div>
-            <div class="clearfix"></div>
+        </form>
+        <div class="hexagons">
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+
+            <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+        </div>
+    </section>
+
+    <div id="circle1">
+        <div id="inner-cirlce1">
+            <h2> </h2>
         </div>
     </div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 
 
 @endsection

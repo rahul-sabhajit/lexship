@@ -62,9 +62,11 @@ span.menu {
   display: none;
 }
  .top-header {
-  margin: 2em 0;
+  background-color: #00a4a2;
+  margin: 0em 0;
   text-align: center;
   position: relative;
+  padding: 24px;
 }
 .top-menu ul li {
   display: inline-block;
@@ -74,14 +76,14 @@ span.menu {
 }
 .top-menu ul li a {
   font-size: 1.4em;
-  color: #000;
-    padding: 0 2em;
+  color: #FFFFFF;
+  padding: 0 2em;
   text-decoration: none;
-    font-weight: 100;
-	font-family: 'Dosis-Medium';
+  font-weight: 100;
+  font-family: 'Dosis-Medium';
 }
 .top-menu ul li a:hover{
-	color:#3598db;
+	color: #33dba5;
 }
 .top-menu ul li:nth-child(3) {
   margin-right: 13em;
@@ -106,6 +108,9 @@ span.menu {
 	font-size:1em;
 	line-height:1.8em;
 	margin-top:2em;
+}
+.select2{
+    width: 25%;
 }
 .banner-info a{
 	color: #fff;

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLcmMethodsTable extends Migration
+class CreateTrackingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateLcmMethodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lcm_methods', function (Blueprint $table) {
+        Schema::create('trackings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('methodName');
+            $table->string('order_id');
+            $table->string('awb_number');
+            $table->text('vendor_json');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateLcmMethodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lcm_methods');
+        Schema::dropIfExists('trackings');
     }
 }

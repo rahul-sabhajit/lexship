@@ -1,10 +1,10 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="{{ asset('/js/jquery-1.11.1.min.js') }}"></script>
-{{--<link rel="stylesheet" href="{{ asset('/css/flexslider.css') }}" type="text/css" media="screen" />--}}
-<!--scrolling-->
 <script type="text/javascript" src="{{ asset('/js/move-top.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/easing.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
 
 <script type="text/javascript">
     jQuery(document).ready(function($) {

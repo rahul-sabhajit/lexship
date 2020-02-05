@@ -15,8 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    /*define('API_URL', env('ApiURL')),
-    define('BASE_URL', env('BaseURL')),*/
+    define('API_URL', env('API_URL')),
+    define('BASE_URL', env('BaseURL')),
 
     /*
     |--------------------------------------------------------------------------

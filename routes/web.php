@@ -12,19 +12,21 @@
 */
 
 Auth::Routes();
-Route::get('/', [ 'as' => 'login', 'uses' => 'App\AppController@login'])->middleware('guest');
-Route::get('/login', [ 'as' => 'login', 'uses' => 'App\AppController@login'])->middleware('guest');;
-Route::get('/register', 'App\AppController@register')->middleware('guest');;
+Route::get('/', [ 'as' => 'login', 'uses' => 'App\AppController@login']);
+Route::get('/login', [ 'as' => 'login', 'uses' => 'App\AppController@login']);
+Route::get('/register', 'App\AppController@register');
 Route::post('/loginData', 'App\AppController@loginPost');
 Route::post('/registerData', 'App\AppController@registerPost');
 Route::group(['middleware' => ['web', 'auth:CustomAuth']], function () {
 
-    Route::get('/home', [ 'as' => 'home', 'uses' => 'App\AppMainController@showcalulator']);
+    Route::get('/home', [ 'as' => 'home', 'uses' => 'App\AppMainController@package']);
     Route::get('/logout', [ 'as' => 'logout', 'uses' => 'App\AppController@logout']);
-    Route::get('/lcm', [ 'as' => 'lcm', 'uses' => 'App\AppMainController@showcalulator']);
-    Route::post('/lcm', [ 'as' => 'lcm', 'uses' => 'App\AppMainController@calculate']);
+    Route::get('/package', [ 'as' => 'lcm', 'uses' => 'App\AppMainController@package']);
+    Route::get('/package_single/{id}', [ 'as' => 'package_single', 'uses' => 'App\AppMainController@package_single']);
+    Route::get('/export', [ 'as' => 'export', 'uses' => 'App\AppMainController@export']);
+    Route::post('/updateStatus', [ 'as' => 'updateStatus', 'uses' => 'App\AppMainController@updateStatus']);
     Route::get('/userlist', [ 'as' => 'userlist', 'uses' => 'App\AppMainController@usershow']);
-    Route::get('/lcmhistory', [ 'as' => 'lcmhistory', 'uses' => 'App\AppMainController@lcmcalculated']);
+
 
 });
 

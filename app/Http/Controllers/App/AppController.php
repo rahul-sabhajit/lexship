@@ -38,7 +38,7 @@ class AppController extends Controller
         $postD['email'] = $request->email;
         $postD['password'] = $request->password;
         $postData = json_encode($postD);
-        //echo env('API_URL').'login';exit;
+        //echo json_encode($postData);
 
         $curl = curl_init();
         curl_setopt_array($curl, array(

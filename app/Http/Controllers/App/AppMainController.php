@@ -22,12 +22,12 @@ class AppMainController extends Controller
 
     }
 
-    public function showcalulator()
+    public function package()
     {
         $access_token = session('secret_token');
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => env('API_URL') . 'method',
+            CURLOPT_URL => env('API_URL') . 'package',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -45,55 +45,94 @@ class AppMainController extends Controller
         curl_close($curl);
         $array = json_decode($response, true);
         if ($array['message'] == "success") {
+          //  echo json_encode($array['package'][0]['vendor_json']);exit;
 
-            return view('calculator')->with('method', $array['Method']);
+            return view('package')->with('package', $array['package']);
         } else {
             echo "method not mound";
         }
 
     }
 
-    public function calculate(Request $request)
+    public function package_single($awb_number)
     {
-
-        //echo "hi";
         $access_token = session('secret_token');
-        $secret_user_id = session('secret_user_id');
-
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => env('API_URL') . 'method',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => array(
-                "Accept: application/json",
-                "Authorization: Bearer $access_token"
-            ),
-        ));
-        $responseL = curl_exec($curl);
-
-        $err = curl_error($curl);
-        curl_close($curl);
-        $arrayL = json_decode($responseL, true);
-
-        /*$postD['number'] = $request->number;
-        $postD['methodType'] = $request->methodType;
-        $postD['user_id'] = $secret_user_id;*/
-        /*$postData = json_encode($postD);*/
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => env('API_URL') . 'calculateLcm',
+            CURLOPT_URL => env('API_URL') . 'package_details',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => array('number' => $request->number,'methodType' => $request->methodType,'user_id' => $secret_user_id),
+            CURLOPT_POSTFIELDS => array('awb_number' => $awb_number),
+            CURLOPT_HTTPHEADER => array(
+                "Accept: application/json",
+                "Authorization: Bearer $access_token"
+            ),
+        ));
+        $response = curl_exec($curl);
+
+        $err = curl_error($curl);
+        curl_close($curl);
+        $array = json_decode($response, true);
+        //echo json_encode($array);exit;
+        if ($array['message'] == "success") {
+            //  echo json_encode($array['package'][0]['vendor_json']);exit;
+
+            return view('packageStatus')->with('package', $array['package']);
+        } else {
+            echo "method not mound";
+        }
+
+    }
+    public function updateStatus(Request $request)
+    {
+        $access_token = session('secret_token');
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => env('API_URL') . 'package_status_update',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => array('awb_number' => $request->awb_number, 'status' => $request->status),
+            CURLOPT_HTTPHEADER => array(
+                "Accept: application/json",
+                "Authorization: Bearer $access_token"
+            ),
+        ));
+        $response = curl_exec($curl);
+
+        $err = curl_error($curl);
+        curl_close($curl);
+        $array = json_decode($response, true);
+        //echo json_encode($array);exit;
+        if ($array['message'] == "success") {
+            //  echo json_encode($array['package'][0]['vendor_json']);exit;
+
+            return view('packageStatus')->with('package', $array['package']);
+        } else {
+            echo "method not mound";
+        }
+
+    }
+
+    public function export()
+    {
+        $access_token = session('secret_token');
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => env('API_URL') . 'reportData',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
                 "Accept: application/json",
                 "Authorization: Bearer $access_token"
@@ -107,9 +146,9 @@ class AppMainController extends Controller
         //echo json_encode($array);exit;
         if ($array['message'] == "success") {
 
-            return view('calculator')->with('method', $arrayL['Method'])->with('result', $array)->with('selectedmethod', $request->methodType)->with('given_input', $request->number);
+            return view('export')->with('report', $array['report']);
         } else {
-            return view('calculator')->with('method', $arrayL['Method'])->with('message', 'Given Input Format Not Supported');
+            echo "method not mound";
         }
 
     }

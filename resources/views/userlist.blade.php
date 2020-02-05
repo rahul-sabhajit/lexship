@@ -1,13 +1,14 @@
 @extends('layout.app')
 @section('main-content')
     <br/>
-    <div id="home1" style="margin-top: 5%;margin-bottom: 25%;">
+    <div id="home1" style="margin-top: 1%;margin-bottom: 25%;">
         <div class="container">
     <div class="col-md-12 col-md-offset-0">
         <div class="col-md-12 center-block">
             <div class="box box-primary ">
                 <div class="box-header with-border ">
-                    <h2 class="box-title">User List</h2>
+                    <h2 class="box-title" align="center"><b>User List</b></h2>
+                    <br/>
                 </div>
                 <div class="box-body">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-condensed "  >
